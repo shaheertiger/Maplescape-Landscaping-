@@ -53,12 +53,6 @@ export default function About() {
               </T>
             </div>
 
-            <a href="#team"
-                className="inline-flex items-center justify-center px-8 py-3.5 bg-[#4A6741] text-white
-                           rounded-full font-bold text-[10px] tracking-[0.05em] uppercase
-                           hover:bg-[#3A5233] transition-colors duration-300 w-fit">
-              Meet the Team
-            </a>
           </motion.div>
         </div>
 
