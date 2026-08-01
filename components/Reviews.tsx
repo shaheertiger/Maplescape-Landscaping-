@@ -160,7 +160,7 @@ export default function Reviews() {
              </p>
 
              {/* Carousel Card */}
-             <div className="relative bg-[#205A32] rounded-[12px] p-8 md:p-10 pt-16 md:pt-14 mt-12 shadow-xl min-h-[220px]">
+             <div className="relative bg-[#205A32] rounded-[30px] p-8 md:p-10 pt-16 md:pt-14 mt-12 shadow-xl min-h-[220px]">
                
                <AnimatePresence mode="wait">
                  <motion.div
