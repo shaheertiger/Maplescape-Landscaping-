@@ -10,7 +10,7 @@ const STEPS = [
     desc: "For nearly 20 years, Maplescape Landscape Services has been Canada's premier landscape partner.",
     img: "/process-planting.jpg",
     posX: "14.28%",
-    posY: "70%",
+    posY: "65%",
     imgPos: "50% 60%" // Slightly lower than center to capture planting action
   },
   { 
@@ -19,7 +19,7 @@ const STEPS = [
     desc: "From residential to commercial, Maplescape's dedication to satisfaction truly stands out.",
     img: "/process-watering.jpg",
     posX: "35.71%",
-    posY: "30%",
+    posY: "35%",
     imgPos: "15% 10%" // Inline style objectPosition
   },
   { 
@@ -28,7 +28,7 @@ const STEPS = [
     desc: "Their passion for nature and details make them the trusted choice for landscaping nationwide.",
     img: "/process-grown-garden.jpg",
     posX: "57.14%",
-    posY: "70%"
+    posY: "65%"
   },
   { 
     num: "4", 
@@ -36,7 +36,7 @@ const STEPS = [
     desc: "From private yards to corporate spaces, Maplescape's excellence and client happiness shine brightly.",
     img: "/process-garden-expansion.jpg",
     posX: "78.57%",
-    posY: "30%"
+    posY: "35%"
   },
 ];
 
@@ -52,7 +52,7 @@ const item: Variants = {
 
 export default function Process() {
   return (
-    <section id="process" className="relative pt-12 pb-24 md:pt-16 md:pb-48 w-full mx-auto bg-gradient-to-b from-[#FDFBF7] via-[#E2F0C8] to-[#BBD885] overflow-hidden">
+    <section id="process" className="relative pt-12 pb-32 md:pt-16 md:pb-72 w-full mx-auto bg-gradient-to-b from-[#FDFBF7] via-[#E2F0C8] to-[#BBD885] overflow-hidden">
 
       {/* Decorative Side Leaves */}
       <div className="absolute top-[5%] left-[-2%] opacity-30 pointer-events-none">
