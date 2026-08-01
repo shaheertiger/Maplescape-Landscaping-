@@ -41,7 +41,7 @@ export default function About() {
             
             <motion.h2 className="font-[family-name:var(--font-display)] font-medium text-[#162818] leading-tight tracking-tight mb-6"
                 style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}>
-              <T id="about.title" className="whitespace-pre-line">Built on passion.{"\n"}Focused on you.</T>
+              <T id="about.title" className="whitespace-pre-line">{`Built on passion.\nFocused on you.`}</T>
             </motion.h2>
 
             <div className="space-y-4 text-[#162818]/60 text-sm leading-relaxed font-medium mb-8">
