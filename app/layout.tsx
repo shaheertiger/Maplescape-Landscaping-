@@ -21,6 +21,54 @@ export const metadata: Metadata = {
   title: "Maplescape Landscaping | Premium Landscape Company",
   description:
     "Maplescape Landscaping provides premium landscape construction and maintenance services, specializing in creating beautiful outdoor living areas.",
+  keywords: [
+    "landscaping",
+    "landscape design",
+    "garden maintenance",
+    "hardscaping",
+    "tree plantation",
+    "premium landscaping",
+    "outdoor living",
+    "professional gardeners"
+  ],
+  authors: [{ name: "Maplescape Landscaping" }],
+  openGraph: {
+    title: "Maplescape Landscaping | Premium Landscape Company",
+    description:
+      "Maplescape Landscaping provides premium landscape construction and maintenance services, specializing in creating beautiful outdoor living areas.",
+    siteName: "Maplescape Landscaping",
+    images: [
+      {
+        url: "/images/landing_bg_hi_res.png",
+        width: 1200,
+        height: 630,
+        alt: "Maplescape Landscaping Hero Image",
+      },
+    ],
+    locale: "en_CA",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Maplescape Landscaping | Premium Landscape Company",
+    description:
+      "Maplescape Landscaping provides premium landscape construction and maintenance services.",
+    images: ["/images/landing_bg_hi_res.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "/",
+  }
 };
 
 export default function RootLayout({
