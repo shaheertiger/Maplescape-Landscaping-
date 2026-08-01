@@ -40,7 +40,7 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#home" className="flex flex-col leading-none group relative z-50">
             <span className={`font-[family-name:var(--font-display)] font-bold text-xl md:text-2xl tracking-tight leading-none transition-colors duration-300 ${isDark ? "text-[#1E2B1F]" : "text-white"}`}>
-              MAPLE<span className={isDark ? "text-[#BBD885]" : "text-white/70"}>SCAPE</span>
+              MAPLE<span className="text-[#BBD885]">SCAPE</span>
             </span>
             <span className={`text-[8px] md:text-[9px] uppercase tracking-[0.22em] mt-1 font-medium transition-colors duration-300 ${isDark ? "text-[#1E2B1F]/40" : "text-white/60"}`}>
               Landscape Design
