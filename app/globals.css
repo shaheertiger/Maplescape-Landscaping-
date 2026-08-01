@@ -10,8 +10,8 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: #0a0a0c; /* Deep obsidian */
-  color: #F5F0E8;
+  background-color: #FDFBF7; /* Creamy off-white */
+  color: #111111;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -26,8 +26,8 @@ body::before {
   pointer-events: none;
   z-index: -1;
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
   background-size: 160px 160px;
   background-position: center top;
 }

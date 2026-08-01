@@ -1,182 +1,229 @@
 "use client";
 import { motion, Variants } from "framer-motion";
-import Image from "next/image";
+import { T } from "@/context/ContentContext";
+import SectionLabel from "@/components/SectionLabel";
 
 const STEPS = [
   { 
-    num: "01", 
-    title: "After Initial\nContact",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1.5">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-        <line x1="16" y1="2" x2="16" y2="6"></line>
-        <line x1="8" y1="2" x2="8" y2="6"></line>
-        <line x1="3" y1="10" x2="21" y2="10"></line>
-        <circle cx="8" cy="15" r="1" fill="#C9A84C"></circle>
-        <circle cx="12" cy="15" r="1" fill="#C9A84C"></circle>
-        <circle cx="16" cy="15" r="1" fill="#C9A84C"></circle>
-      </svg>
-    )
+    num: "1", 
+    title: "Tree Plantation",
+    desc: "For nearly 20 years, Maplescape Landscape Services has been Canada's premier landscape partner.",
+    img: "/process-planting.jpg",
+    posX: "14.28%",
+    posY: "70%",
+    imgPos: "50% 60%" // Slightly lower than center to capture planting action
   },
   { 
-    num: "02", 
-    title: "Written\nProposal",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1.5">
-        <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
-      </svg>
-    ) // Note: using a handshake or similar generic icon, handshake is complex so I'll use a document or checkmark. Wait, in screenshot it's a handshake. Let me use an abstract handshake/deal icon.
+    num: "2", 
+    title: "Watering Plants",
+    desc: "From residential to commercial, Maplescape's dedication to satisfaction truly stands out.",
+    img: "/process-watering.jpg",
+    posX: "35.71%",
+    posY: "30%",
+    imgPos: "15% 10%" // Inline style objectPosition
   },
   { 
-    num: "03", 
-    title: "Site Visit and\nAssessment",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1.5">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-        <circle cx="12" cy="10" r="3"></circle>
-      </svg>
-    )
+    num: "3", 
+    title: "Grown Garden",
+    desc: "Their passion for nature and details make them the trusted choice for landscaping nationwide.",
+    img: "/process-grown-garden.jpg",
+    posX: "57.14%",
+    posY: "70%"
   },
   { 
-    num: "04", 
-    title: "Let's Get\nProposal!",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1.5">
-        <path d="M13.5 2.5a4.24 4.24 0 0 0-6 0L2.5 7.5a4.24 4.24 0 0 0 0 6L7 18l1.5-1.5-4.5-4.5a2.12 2.12 0 0 1 0-3l5-5a2.12 2.12 0 0 1 3 0l4.5 4.5L18 7l-4.5-4.5z"></path>
-        <path d="M12 12l8 8"></path>
-        <path d="M16 22l5-5"></path>
-      </svg> // Rocket approximation
-    )
+    num: "4", 
+    title: "Garden Expansion",
+    desc: "From private yards to corporate spaces, Maplescape's excellence and client happiness shine brightly.",
+    img: "/process-garden-expansion.jpg",
+    posX: "78.57%",
+    posY: "30%"
   },
 ];
 
 const container: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.2 } },
 };
 
 const item: Variants = {
-  hidden:  { opacity: 0, scale: 0.95, y: 15 },
-  visible: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 20 } },
+  hidden:  { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 20 } },
 };
 
 export default function Process() {
   return (
-    <section id="process" className="relative py-20 overflow-hidden w-full max-w-[1600px] mx-auto">
+    <section id="process" className="relative pt-12 pb-24 md:pt-16 md:pb-48 w-full mx-auto bg-gradient-to-b from-[#FDFBF7] via-[#E2F0C8] to-[#BBD885] overflow-hidden">
 
-      {/* HUGE "OUR PROCESS" TEXT */}
-      <div className="w-full flex justify-center mb-10 px-4">
-        <motion.h2 
-          initial={{ opacity: 0, y: 40, letterSpacing: "-0.05em", filter: "blur(8px)" }}
-          whileInView={{ opacity: 1, y: 0, letterSpacing: "normal", filter: "blur(0px)" }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="font-[family-name:var(--font-display)] text-[#F5F0E8] font-bold text-center leading-none tracking-tight"
-          style={{ fontSize: "clamp(4rem, 12vw, 12rem)" }}>
-          OUR PROCESS
-        </motion.h2>
+      {/* Decorative Side Leaves */}
+      <div className="absolute top-[5%] left-[-2%] opacity-30 pointer-events-none">
+        <svg width="150" height="250" viewBox="0 0 100 200" fill="#1A3B22">
+          <path d="M0 50 C40 40 80 80 50 150 C20 120 0 90 0 50 Z" />
+        </svg>
+      </div>
+      
+      <div className="absolute bottom-[5%] right-[-2%] opacity-30 pointer-events-none transform scale-x-[-1]">
+        <svg width="200" height="300" viewBox="0 0 100 200" fill="#1A3B22">
+          <path d="M0 50 C40 40 80 80 50 150 C20 120 0 90 0 50 Z" />
+        </svg>
       </div>
 
-      {/* CONNECTED STEPS CONTAINER */}
-      <div className="relative w-full px-4 md:px-16 pb-32">
-        {/* SVG Squiggly connecting line */}
-        <div className="absolute top-1/2 left-[10%] right-[10%] h-[150px] -translate-y-1/2 hidden lg:block pointer-events-none z-0">
-          <svg width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 1000 100" fill="none" stroke="rgba(168,116,255,0.4)" strokeWidth="1.5">
-            <path d="M 50 50 C 200 -20, 300 120, 500 50 C 700 -20, 800 120, 950 50" />
-          </svg>
+      <div className="relative z-10 max-w-[1400px] mx-auto px-4 md:px-8">
+        
+        {/* HEADER SECTION (Left Aligned) */}
+        <div className="max-w-2xl mb-8 md:mb-4">
+          <SectionLabel id="process.subtitle" defaultText="OUR WORK PROCESS" />
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-[family-name:var(--font-display)] text-[#14361C] font-medium leading-[1.1] mb-6"
+            style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)" }}
+          >
+            <T id="process.title" className="whitespace-pre-line">We follow standard
+method of gardening</T>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-[#14361C]/70 text-lg md:text-xl font-medium max-w-lg leading-relaxed"
+          >
+            <T as="span" id="process.description">Elevate your environment with our unrivaled expertise and passion for excellence!</T>
+          </motion.p>
         </div>
 
-        <motion.div 
-          variants={container} 
-          initial="hidden" 
-          whileInView="visible" 
-          viewport={{ once: true, amount: 0.1 }}
-          className="relative z-10 flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-6 lg:gap-8"
-        >
-          {STEPS.map((step, i) => {
-            let translateClass = "";
-            if (i === 0) translateClass = "lg:translate-y-[20px]";
-            if (i === 1) translateClass = "lg:-translate-y-[30px]";
-            if (i === 2) translateClass = "lg:translate-y-[30px]";
-            if (i === 3) translateClass = "lg:-translate-y-[20px]";
+        {/* ── DESKTOP HORIZONTAL TIMELINE ── */}
+        <div className="hidden md:block relative w-full h-[600px] z-10 mt-4">
+          
+          {/* The Winding SVG Path */}
+          <div className="absolute inset-0 z-0">
+            <svg viewBox="0 0 1400 600" preserveAspectRatio="none" className="w-full h-full">
+              <motion.path 
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 2.5, ease: "easeInOut" }}
+                d="M -50 250 C 100 250, 100 450, 200 450 C 350 450, 350 150, 500 150 C 650 150, 650 450, 800 450 C 950 450, 950 150, 1100 150 C 1250 150, 1250 250, 1450 250" 
+                fill="none" 
+                stroke="#2D5A27" 
+                strokeWidth="2" 
+                vectorEffect="non-scaling-stroke" 
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
 
-            return (
-              <div key={step.num} className={`relative z-10 w-full max-w-[320px] ${translateClass}`}>
-                <motion.div
-                  variants={item}
-                  whileHover={{ scale: 1.05, y: -10, boxShadow: "0 40px 80px rgba(0,0,0,0.9)", zIndex: 50 }}
-                  className={`glow-border bg-[#101014] p-5 md:p-6 w-full flex items-center gap-4 shadow-2xl backdrop-blur-sm cursor-default`}
-                >
-                {/* Number */}
-                <span className="font-[family-name:var(--font-display)] font-bold text-[#F5F0E8] leading-none"
-                      style={{ fontSize: "clamp(3.5rem, 5vw, 4.5rem)" }}>
+          {/* Nodes and Content */}
+          {STEPS.map((step, i) => (
+            <motion.div 
+              key={step.num}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: i * 0.3 }}
+              className="absolute flex flex-col items-center z-10"
+              style={{ left: step.posX, top: step.posY, transform: "translate(-50%, -50%)" }}
+            >
+              
+              {/* Photo Node with Wreath */}
+              <div className="relative mb-6">
+                
+                {/* Wreath SVG */}
+                <div className="absolute inset-0 scale-125 pointer-events-none opacity-40 text-[#2D5A27]">
+                  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5" className="w-full h-full animate-[spin_60s_linear_infinite]">
+                    {/* Simplified wreath representation */}
+                    <circle cx="50" cy="50" r="45" strokeDasharray="2 4" />
+                    <path d="M 50 5 Q 60 15 50 25 Q 40 15 50 5" fill="currentColor" />
+                    <path d="M 95 50 Q 85 60 75 50 Q 85 40 95 50" fill="currentColor" />
+                    <path d="M 50 95 Q 40 85 50 75 Q 60 85 50 95" fill="currentColor" />
+                    <path d="M 5 50 Q 15 40 25 50 Q 15 60 5 50" fill="currentColor" />
+                  </svg>
+                </div>
+
+                {/* Circular Photo */}
+                <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white shadow-xl bg-white relative z-10">
+                  <img 
+                    src={step.img} 
+                    alt={step.title} 
+                    className="w-full h-full object-cover" 
+                    style={{ objectPosition: step.imgPos || 'center' }}
+                  />
+                </div>
+
+                {/* Number Badge */}
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#14361C] text-white flex items-center justify-center font-bold text-lg border-2 border-white z-20 shadow-lg">
                   {step.num}
-                </span>
+                </div>
+              </div>
 
-                <div className="flex-1">
-                  <p className="text-[#888890] text-[8px] uppercase tracking-[0.2em] font-semibold mb-1">
-                    WE SERVE
-                  </p>
-                  <h3 className="text-[#F5F0E8] font-bold text-[13px] md:text-[15px] leading-snug whitespace-pre-line font-[family-name:var(--font-display)]">
-                    {step.title}
-                  </h3>
+              {/* Text Content */}
+              <div className="w-64 text-center mt-2">
+                <h3 className="text-[#14361C] font-bold text-2xl mb-3 font-[family-name:var(--font-display)]">{step.title}</h3>
+                <p className="text-[#14361C]/70 text-sm leading-relaxed font-medium">{step.desc}</p>
+              </div>
+
+            </motion.div>
+          ))}
+        </div>
+
+        {/* ── MOBILE VERTICAL TIMELINE ── */}
+        <div className="md:hidden relative w-full mt-12 z-10">
+          
+          {/* Vertical Line */}
+          <div className="absolute left-1/2 top-4 bottom-4 w-[2px] bg-[#2D5A27]/30 rounded-full z-0 transform -translate-x-1/2"></div>
+
+          <motion.div 
+            variants={container} 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true, amount: 0.1 }}
+            className="flex flex-col gap-16"
+          >
+            {STEPS.map((step) => (
+              <motion.div key={step.num} variants={item} className="relative flex flex-col items-center z-10">
+                
+                {/* Photo Node with Wreath */}
+                <div className="relative mb-6">
+                  
+                  {/* Circular Photo */}
+                  <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-xl bg-white relative z-10">
+                    <img 
+                      src={step.img} 
+                      alt={step.title} 
+                      className="w-full h-full object-cover"
+                      style={{ objectPosition: step.imgPos || 'center' }}
+                    />
+                  </div>
+
+                  {/* Number Badge */}
+                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#14361C] text-white flex items-center justify-center font-bold text-lg border-2 border-white z-20 shadow-lg">
+                    {step.num}
+                  </div>
                 </div>
 
-                <div className="self-start mt-1">
-                  {step.icon}
+                {/* Text Content */}
+                <div className="w-72 text-center mt-2 bg-white/40 backdrop-blur-sm p-4 rounded-2xl shadow-sm border border-white/50">
+                  <h3 className="text-[#14361C] font-bold text-xl mb-2 font-[family-name:var(--font-display)]">{step.title}</h3>
+                  <p className="text-[#14361C]/70 text-sm leading-relaxed font-medium">{step.desc}</p>
                 </div>
+
               </motion.div>
-            </div>
-            );
-          })}
-        </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
       </div>
 
-      {/* CONTACT US BLOCK (Overlapping image) */}
-      <div className="relative w-full px-4 md:px-16 mt-12 flex flex-col md:block pb-20">
-        
-        {/* Background Image Container */}
-        <motion.div 
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          whileHover={{ scale: 1.02, y: -5, boxShadow: "0 30px 60px rgba(0,0,0,0.8)", zIndex: 10 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ type: "spring", stiffness: 80, damping: 20 }}
-          className="relative w-full md:max-w-[1100px] h-[300px] md:h-[500px] rounded-[2rem] overflow-hidden md:ml-auto order-2 md:order-none"
-        >
-          <Image 
-            src="/images/whatsapp/w10.jpeg" 
-            alt="Expert Landscaping" 
-            fill 
-            className="object-cover brightness-75"
-          />
-        </motion.div>
-
-        {/* Floating Contact Block */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          whileHover={{ scale: 1.05, y: -8, boxShadow: "0 40px 80px rgba(0,0,0,0.9)", zIndex: 50 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ type: "spring", stiffness: 80, damping: 20 }}
-          className="relative md:absolute w-full md:w-auto left-0 md:left-[15%] top-0 md:top-1/2 md:-translate-y-1/2 glow-border bg-[#0a0a0c]/90 backdrop-blur-xl px-6 md:px-20 py-10 md:py-16 shadow-[0_30px_80px_rgba(0,0,0,0.8)] z-20 flex flex-col items-center cursor-default order-1 md:order-none mb-6 md:mb-0"
-        >
-          <h2 className="font-[family-name:var(--font-display)] font-bold text-[#F5F0E8] leading-none tracking-tight mb-8"
-              style={{ fontSize: "clamp(2rem, 8vw, 7rem)" }}>
-            Contact Us
-          </h2>
-          
-          <a href="#contact" className="group relative rounded-full bg-[#353232] border border-[#C9A84C]/50 px-6 py-3 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C9A84C]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <span className="relative z-10 text-[#C9A84C] text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase flex items-center gap-2">
-              REQUEST YOUR ESTIMATE
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </span>
-          </a>
-        </motion.div>
-
+      {/* Smooth Wave Divider at the bottom transitioning into Portfolio */}
+      <div className="absolute bottom-0 left-0 w-full z-20 translate-y-[1px]">
+        {/* Match the wave SVG to the dark green background of the Portfolio section */}
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-12 md:h-24" fill="#2C4033">
+          <path d="M0,120 L1440,120 L1440,70 C1080,130 720,10 360,70 C180,100 90,90 0,70 Z" />
+        </svg>
       </div>
 
     </section>

@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Mail, Phone } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -14,10 +15,13 @@ export default function Navbar() {
 
   const navLinks = [
     ["Home", "#home"],
-    ["About", "#about"],
     ["Services", "#services"],
+    ["Portfolio", "#portfolio"],
+    ["About", "#about"],
     ["Process", "#process"],
   ];
+
+  const isDark = scrolled || mobileMenuOpen;
 
   return (
     <>
@@ -26,18 +30,20 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 80, damping: 22, delay: 0.1 }}
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          scrolled || mobileMenuOpen
-            ? "bg-[#050505]/95 backdrop-blur-xl border-b border-[0.5px] border-[#E6E6FA]/8 py-4 md:py-3"
-            : "bg-gradient-to-b from-[#050505]/90 via-[#050505]/40 to-transparent py-6 md:py-5"
+          isDark
+            ? "bg-white/95 backdrop-blur-xl border-b border-[#1E2B1F]/5 py-4 shadow-sm"
+            : "bg-transparent py-6"
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-16 flex items-center justify-between">
+          
+          {/* Logo */}
           <a href="#home" className="flex flex-col leading-none group relative z-50">
-            <span className="font-[family-name:var(--font-display)] text-[#F5F0E8] font-bold text-xl md:text-2xl tracking-tight leading-none">
-              Cutting <span className="text-[#C9A84C]">Edge</span>
+            <span className={`font-[family-name:var(--font-display)] font-bold text-xl md:text-2xl tracking-tight leading-none transition-colors duration-300 ${isDark ? "text-[#1E2B1F]" : "text-white"}`}>
+              MAPLE<span className={isDark ? "text-[#BBD885]" : "text-white/70"}>SCAPE</span>
             </span>
-            <span className="text-[8px] md:text-[9px] uppercase tracking-[0.22em] text-[#F5F0E8]/30 mt-1 font-medium">
-              Landscaping &amp; Snowplowing
+            <span className={`text-[8px] md:text-[9px] uppercase tracking-[0.22em] mt-1 font-medium transition-colors duration-300 ${isDark ? "text-[#1E2B1F]/40" : "text-white/60"}`}>
+              Landscape Design
             </span>
           </a>
 
@@ -45,15 +51,19 @@ export default function Navbar() {
           <ul className="hidden md:flex items-center gap-8">
             {navLinks.map(([l, h]) => (
               <li key={h}>
-                <a href={h} className="text-[#F5F0E8]/50 hover:text-[#F5F0E8] text-xs tracking-[0.08em] uppercase font-medium transition-colors duration-200 relative group">
+                <a href={h} className={`text-xs tracking-[0.08em] uppercase font-bold transition-colors duration-200 relative group ${isDark ? "text-[#1E2B1F]/70 hover:text-[#BBD885]" : "text-white/80 hover:text-white"}`}>
                   {l}
-                  <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#C9A84C] group-hover:w-full transition-all duration-300" />
+                  <span className={`absolute -bottom-0.5 left-0 w-0 h-px transition-all duration-300 ${isDark ? "bg-[#BBD885] group-hover:w-full" : "bg-white group-hover:w-full"}`} />
                 </a>
               </li>
             ))}
             <li>
-              <a href="#contact"
-                className="text-[10px] uppercase tracking-[0.15em] font-semibold px-5 py-2.5 border border-[0.5px] border-[#C9A84C]/40 text-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#050505] transition-all duration-250">
+              <a href="https://wa.me/14378552790"
+                 className={`text-[10px] uppercase tracking-[0.15em] font-bold px-6 py-2.5 rounded-full transition-all duration-300 border ${
+                  isDark 
+                    ? "border-[#1E2B1F]/10 text-[#1E2B1F] hover:bg-[#1E2B1F] hover:text-white" 
+                    : "border-white/30 text-white hover:bg-white hover:text-[#1E2B1F]"
+                }`}>
                 Get a Quote
               </a>
             </li>
@@ -61,12 +71,10 @@ export default function Navbar() {
 
           {/* Mobile Hamburger Toggle */}
           <button 
-            className="md:hidden relative z-50 w-8 h-8 flex flex-col justify-center items-center gap-1.5 focus:outline-none"
+            className={`md:hidden relative z-50 focus:outline-none p-2 transition-colors duration-300 ${isDark ? "text-[#1E2B1F]" : "text-white"}`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            <span className={`w-6 h-[1.5px] bg-[#F5F0E8] transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-[7.5px]' : ''}`} />
-            <span className={`w-6 h-[1.5px] bg-[#F5F0E8] transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
-            <span className={`w-6 h-[1.5px] bg-[#F5F0E8] transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-[7.5px]' : ''}`} />
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </motion.nav>
@@ -79,7 +87,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="fixed inset-0 z-40 bg-[#050505]/98 backdrop-blur-2xl pt-28 px-6 md:hidden flex flex-col h-[100svh]"
+            className="fixed inset-0 z-40 bg-white/98 backdrop-blur-2xl pt-28 px-6 md:hidden flex flex-col h-[100svh]"
           >
             <ul className="flex flex-col gap-8 text-center mt-10">
               {navLinks.map(([l, h]) => (
@@ -89,26 +97,26 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
                 >
-                  <a href={h} onClick={() => setMobileMenuOpen(false)} className="text-[#F5F0E8] font-[family-name:var(--font-display)] text-3xl font-medium tracking-wide">
+                  <a href={h} onClick={() => setMobileMenuOpen(false)} className="text-[#1E2B1F] font-[family-name:var(--font-display)] text-3xl font-medium tracking-wide hover:text-[#BBD885]">
                     {l}
                   </a>
                 </motion.li>
               ))}
             </ul>
             <div className="mt-16 flex justify-center">
-              <a href="#contact"
+              <a href="https://wa.me/14378552790"
                  onClick={() => setMobileMenuOpen(false)}
-                 className="inline-block text-xs uppercase tracking-[0.2em] font-bold px-8 py-4 bg-[#C9A84C] text-[#050505] hover:bg-[#E2C877] transition-all">
+                 className="inline-block text-xs uppercase tracking-[0.2em] font-bold px-8 py-4 bg-[#BBD885] text-white hover:bg-[#3A5233] rounded-full transition-all">
                 Get a Quote
               </a>
             </div>
             
-            <div className="mt-auto pb-12 flex justify-center gap-6">
-                <a href="mailto:kyle_cuttingedge@hotmail.com" className="text-[#F5F0E8]/50 hover:text-[#C9A84C] transition-colors p-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            <div className="flex items-center justify-center gap-6 mt-12 border-t border-[#1E2B1F]/10 pt-8">
+                <a href="https://wa.me/14378552790" className="text-[#1E2B1F]/50 hover:text-[#BBD885] transition-colors p-2">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                 </a>
-                <a href="tel:+14168057642" className="text-[#F5F0E8]/50 hover:text-[#C9A84C] transition-colors p-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <a href="https://wa.me/14378552790" className="text-[#1E2B1F]/50 hover:text-[#BBD885] transition-colors p-2">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                 </a>
             </div>
           </motion.div>

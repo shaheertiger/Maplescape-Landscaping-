@@ -1,10 +1,12 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import SurfaceWrapper from "@/components/SurfaceWrapper";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
-import Achievements from "@/components/Achievements";
+import Portfolio from "@/components/Portfolio";
 import Reviews from "@/components/Reviews";
+import BannerCTA from "@/components/BannerCTA";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -12,11 +14,14 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <About />
-      <Services />
+      <SurfaceWrapper>
+        <About />
+        <Services />
+      </SurfaceWrapper>
       <Process />
-      <Achievements />
+      <Portfolio />
       <Reviews />
+      <BannerCTA />
       <Footer />
     </main>
   );

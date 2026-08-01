@@ -1,5 +1,5 @@
 {
-  "name": "cutting-edge-next",
+  "name": "maplescape-landscaping",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,10 +8,18 @@
     "start": "next start"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.7.0",
+    "clsx": "^2.1.1",
     "framer-motion": "^12.42.0",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.25",
+    "lucide-react": "^1.28.0",
     "next": "16.2.9",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "tailwind-merge": "^3.6.0",
+    "three": "^0.185.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

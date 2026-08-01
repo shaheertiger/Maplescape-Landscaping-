@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "@/components/SmoothScroll";
+import { ContentProvider } from "@/context/ContentContext";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -16,9 +18,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Cutting Edge Landscaping | Toronto's Premier Landscape Company",
+  title: "Maplescape Landscaping | Premium Landscape Company",
   description:
-    "Cutting Edge Landscaping has provided premium landscape construction and maintenance services to the greater Toronto, Ontario, since 2004.",
+    "Maplescape Landscaping provides premium landscape construction and maintenance services, specializing in creating beautiful outdoor living areas.",
 };
 
 export default function RootLayout({
@@ -28,8 +30,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="bg-[#FAFAF8] font-[family-name:var(--font-sans)] text-[#0D2418] antialiased overflow-x-hidden">
-        {children}
+      <body className="font-[family-name:var(--font-sans)] antialiased overflow-x-hidden">
+        <ContentProvider>
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
+        </ContentProvider>
       </body>
     </html>
   );
