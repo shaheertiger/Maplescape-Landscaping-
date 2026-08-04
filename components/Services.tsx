@@ -8,7 +8,7 @@ const SERVICES = [
   { 
     id: "design",
     name: "Landscape Design", 
-    image: "/images/service-design-new.jpg", 
+    image: "/images/portfolio-real-1.jpg", 
     desc: "Custom designs that combine beauty, functionality and sustainability.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -20,7 +20,7 @@ const SERVICES = [
   { 
     id: "construction",
     name: "Construction", 
-    image: "/images/service-construction-new.jpg", 
+    image: "/images/portfolio-real-2.jpg", 
     desc: "Expert craftsmanship to bring your landscape design to life with precision.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -33,7 +33,7 @@ const SERVICES = [
   { 
     id: "planting",
     name: "Planting & Styling", 
-    image: "/images/service-planting-new.jpg", 
+    image: "/images/portfolio-real-3.jpg", 
     desc: "Thoughtful plant selection and styling for a vibrant, timeless outdoor space.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
