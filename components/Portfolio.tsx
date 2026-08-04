@@ -4,10 +4,9 @@ import Image from "next/image";
 import SectionLabel from "@/components/SectionLabel";
 
 const PROJECTS = [
-  { id: 1, image: "/images/portfolio-1.png", alt: "Poolside hardscaping" },
-  { id: 2, image: "/images/portfolio-2.png", alt: "Modern front walkway" },
-  { id: 3, image: "/images/portfolio-3.png", alt: "Backyard patio firepit" },
-  { id: 4, image: "/images/portfolio-4.png", alt: "Driveway interlocking" },
+  { id: 1, image: "/images/portfolio-real-1.jpg", alt: "Interlocking stone patio" },
+  { id: 2, image: "/images/portfolio-real-2.jpg", alt: "Screened porch with natural stone" },
+  { id: 3, image: "/images/portfolio-real-3.jpg", alt: "Custom wooden deck" },
 ];
 
 export default function Portfolio() {
@@ -33,8 +32,8 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* 4 Column Vertical Image Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        {/* 3 Column Vertical Image Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
           {PROJECTS.map((project, i) => (
             <motion.div
               key={project.id}
