@@ -1,5 +1,5 @@
 "use client";
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionLabel from "@/components/SectionLabel";
 import Image from "next/image";
@@ -85,11 +85,22 @@ const REVIEWS = [
   },
 ];
 
+const AUTOPLAY_MS = 7000;
+
 export default function Reviews() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   const next = () => setCurrentIndex((prev) => (prev + 1) % REVIEWS.length);
   const prev = () => setCurrentIndex((prev) => (prev - 1 + REVIEWS.length) % REVIEWS.length);
+
+  // Auto-advance the carousel, restarting the timer whenever the slide changes
+  // so a manual Prev/Next click always gets a full interval before the next flip.
+  useEffect(() => {
+    if (paused) return;
+    const timer = setTimeout(next, AUTOPLAY_MS);
+    return () => clearTimeout(timer);
+  }, [currentIndex, paused]);
 
   const current = REVIEWS[currentIndex];
 
@@ -216,7 +227,13 @@ export default function Reviews() {
              </p>
 
              {/* Carousel Card */}
-             <div className="relative bg-[#205A32] rounded-[30px] p-8 md:p-10 pt-16 md:pt-14 mt-12 shadow-xl min-h-[220px]">
+             <div
+               className="relative bg-[#205A32] rounded-[30px] p-8 md:p-10 pt-16 md:pt-14 mt-12 shadow-xl min-h-[220px]"
+               onMouseEnter={() => setPaused(true)}
+               onMouseLeave={() => setPaused(false)}
+               onFocusCapture={() => setPaused(true)}
+               onBlurCapture={() => setPaused(false)}
+             >
                
                <AnimatePresence mode="wait">
                  <motion.div
