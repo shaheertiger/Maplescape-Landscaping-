@@ -31,14 +31,17 @@ const SERVICES = [
     )
   },
   { 
-    id: "planting",
-    name: "Planting & Styling", 
+    id: "decking",
+    name: "Decking", 
     image: "/images/portfolio-real-3.jpg", 
-    desc: "Thoughtful plant selection and styling for a vibrant, timeless outdoor space.",
+    desc: "Custom-built decks that create a durable, beautiful space to relax and entertain.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M12 22c4-4 4-10 0-14-4 4-4 10 0 14z"></path>
-        <path d="M12 22V8"></path>
+        <line x1="3" y1="8" x2="21" y2="8"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="16" x2="21" y2="16"></line>
+        <line x1="7" y1="6" x2="7" y2="18"></line>
+        <line x1="17" y1="6" x2="17" y2="18"></line>
       </svg>
     )
   },
